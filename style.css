@@ -1,0 +1,31 @@
+.search-area {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.search-area input {
+    width: 40%;
+    border-radius: none;
+}
+
+.food-item-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    margin: 20px 100px;
+    place-items: center;
+}
+.food-item{
+    height: 300px;
+    /* background-color: grey; */
+  box-shadow: 10px 20px 30px grey;
+}
+.food-item h5{text-align: center; padding: 10px 10px;}
+
+.food-item img {
+    width: 100%;
+    height: 180px;
+}
+#meal-ingredients{margin-top: 50px ;}
+#meal-ingredients img{height: 100px; width: 100px;}
