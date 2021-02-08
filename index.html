@@ -16,83 +16,14 @@
         <input type="text" id="search-box" class="search-box">
         <button class="btn btn-outline-secondary" type="button" onclick="searchFood()">Search</button>
     </div>
-    <div id="meal-ingredients" class="d-flex justify-content-center">
+    <div id="meal-ingredients" class="d-flex justify-content-center align-items-center">
 
     </div>
-    <div id="food-items" class="food-item-container" >
+    <div id="food-items" class="food-item-container">
 
     </div>
 
-    <script>
-         const mealIngredients = document.getElementById('meal-ingredients');
-        function searchFood() {
-            const searchItem = document.getElementById('search-box').value;
-
-            let url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchItem}`;
-           
-            fetch(url)
-                .then(res => res.json())
-                .then(data => {
-                    console.log(data);
-                    meals = data.meals;
-                    const foodItemsDiv = document.getElementById('food-items');
-                    let foodInfo = '';
-                    let foodIngredient = '';
-                    let ingredient = [];
-                    for (let i = 0; i < meals.length; i++) {
-                        // const foodItemDiv = document.createElement('div');
-                        // foodItemDiv.className = 'food-item';
-                        let meal = data.meals[i];
-                         foodInfo += `
-                             <div class="food-item" onclick="getMealID(${meal.idMeal})">
-                                <img src="${meal.strMealThumb}">
-                                <h5>${meal.strMeal}</h5>
-                                <h5>${meal.idMeal}</h5>
-                             </div>
-                            `
-                        // foodItemDiv.innerHTML = foodInfo;
-                        // foodItemsDiv.appendChild(foodItemDiv);
-                        // console.log();
-                        foodItemsDiv.innerHTML = foodInfo;
-                    }  
-                })              
-        }
-
-        const getMealID = mealID =>{
-            url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealID}`
-            console.log(mealID);
-            fetch(url)
-            .then(res=>res.json())
-            .then(data=>  renderIngredientsInfo(data.meals[0]))
-        
-        }
-        const renderIngredientsInfo = ingredients => {
-            console.log(ingredients);
-            const ingredientDIV = document.getElementById('meal-ingredients');
-            ingredientDIV.innerHTML = `
-            <div>
-                <img src="${ingredients.strMealThumb}">
-                <h2>Ingredients</h2>
-                <h2>${ingredients.strMeal}</h2>
-                <ul>
-                    <li>${ingredients.strIngredient1} - ${ingredients.strMeasure1}</li>
-                    <li>${ingredients.strIngredient2} - ${ingredients.strMeasure2}</li>
-                    <li>${ingredients.strIngredient3} - ${ingredients.strMeasure3}</li>
-                    <li>${ingredients.strIngredient4} - ${ingredients.strMeasure4}</li>
-                    <li>${ingredients.strIngredient5} - ${ingredients.strMeasure5}</li>
-                    <li>${ingredients.strIngredient6} - ${ingredients.strMeasure6}</li>
-                    <li>${ingredients.strIngredient7} - ${ingredients.strMeasure7}</li>
-                    <li>${ingredients.strIngredient8} - ${ingredients.strMeasure8}</li>
-                    <li>${ingredients.strIngredient9} - ${ingredients.strMeasure9}</li>
-                    <li>${ingredients.strIngredient10} - ${ingredients.strMeasure10}</li>
-                </ul>
-            </div>
-            `
-        }
-
-       
-
-    </script>
+    <script src="main.js">    </script>
 </body>
 
 </html>
